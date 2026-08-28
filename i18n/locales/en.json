@@ -1,0 +1,87 @@
+{
+  "app": {
+    "title": "Notes",
+    "skipToContent": "Skip to content"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "locale": {
+    "label": "Language"
+  },
+  "list": {
+    "heading": "Notes",
+    "create": "New note",
+    "edit": "Edit",
+    "delete": "Delete",
+    "untitled": "Untitled",
+    "progress": "{done} of {total}",
+    "more": "{count} more",
+    "noTodos": "No items",
+    "done": "done",
+    "pending": "not done",
+    "emptyTitle": "Nothing here yet",
+    "emptyText": "Create your first note — it can hold a list of tasks."
+  },
+  "editor": {
+    "createHeading": "New note",
+    "editHeading": "Edit note",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Note title",
+    "todosLabel": "Task list",
+    "todoPlaceholder": "What needs doing",
+    "addTodo": "Add item",
+    "removeTodo": "Remove item",
+    "toggleTodo": "Toggle item",
+    "noTodos": "No items yet",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "undo": "Undo",
+    "redo": "Redo",
+    "emptyTodoHint": "Empty items are not saved",
+    "notFoundTitle": "Note not found",
+    "notFoundText": "It may have been deleted, or the link is outdated.",
+    "backToList": "Back to notes"
+  },
+  "confirm": {
+    "deleteTitle": "Delete note?",
+    "deleteText": "“{title}” will be deleted permanently.",
+    "deleteConfirm": "Delete",
+    "cancelTitle": "Discard changes?",
+    "cancelText": "Unsaved changes will be lost.",
+    "cancelConfirm": "Discard changes",
+    "keepEditing": "Keep editing",
+    "draftTitle": "Restore draft?",
+    "draftText": "There are unsaved changes for this note.",
+    "draftConfirm": "Restore",
+    "draftDiscard": "Discard",
+    "removedTitle": "Note deleted",
+    "removedText": "It was deleted in another tab. You can save your changes as a new note.",
+    "removedSaveAsNew": "Save as new",
+    "removedGoBack": "Back to list",
+    "cancelAction": "Cancel"
+  },
+  "announce": {
+    "saved": "Note saved",
+    "cancelled": "Changes discarded",
+    "deleted": "Note deleted",
+    "draftRestored": "Draft restored",
+    "draftDiscarded": "Draft discarded",
+    "undone": "Change undone",
+    "redone": "Change redone"
+  },
+  "banner": {
+    "corrupt": "Saved data is corrupted and was not loaded. New notes will overwrite it.",
+    "unsupportedVersion": "Data was written by a newer version of the app. Writing is disabled so nothing is lost.",
+    "quota": "Could not save: browser storage is full.",
+    "unavailable": "Could not save: browser storage is unavailable.",
+    "dismiss": "Dismiss"
+  },
+  "modal": {
+    "close": "Close"
+  }
+}
