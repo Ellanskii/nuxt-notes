@@ -4,12 +4,12 @@ import type { Note, TodoItem } from '~/types/note'
  * Запись истории хранит только изменившееся поле, а не копию заметки:
  * 50 шагов истории весят килобайты независимо от размера списка.
  */
-export type NotePatch =
-  | { t: 'title', from: string, to: string }
-  | { t: 'todo-text', id: string, from: string, to: string }
-  | { t: 'todo-done', id: string, from: boolean, to: boolean }
-  | { t: 'todo-add', index: number, item: TodoItem }
-  | { t: 'todo-remove', index: number, item: TodoItem }
+export type NotePatch
+  = | { t: 'title', from: string, to: string }
+    | { t: 'todo-text', id: string, from: string, to: string }
+    | { t: 'todo-done', id: string, from: boolean, to: boolean }
+    | { t: 'todo-add', index: number, item: TodoItem }
+    | { t: 'todo-remove', index: number, item: TodoItem }
 
 export type PatchDirection = 'redo' | 'undo'
 

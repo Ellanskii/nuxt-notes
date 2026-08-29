@@ -1,9 +1,9 @@
 let counter = 0
 
 export function createId(): string {
-  const uuid = globalThis.crypto?.randomUUID
-  if (uuid) {
-    return globalThis.crypto.randomUUID()
+  const webCrypto = globalThis.crypto as Crypto | undefined
+  if (typeof webCrypto?.randomUUID === 'function') {
+    return webCrypto.randomUUID()
   }
 
   // Фолбэк для окружений без crypto (старые браузеры, http-контекст).
