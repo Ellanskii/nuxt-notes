@@ -33,7 +33,8 @@ export function useNoteEditor(noteId: string) {
   const source = isNew ? emptyNote() : store.byId(noteId)
   const missing = ref(!isNew && source === undefined)
 
-  const draft = reactive<Note>(structuredClone(source ?? emptyNote()))
+  // Заметка из стора — reactive-прокси, structuredClone на нём падает.
+  const draft = reactive<Note>(toPlain(source ?? emptyNote()))
   const history = createHistory()
 
   // Заметка исчезла из стора, пока её редактировали в этой вкладке.
