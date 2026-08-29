@@ -43,7 +43,7 @@ app/
   components/    base/ icon/ modal/ note/ editor/
   pages/         index.vue и notes/[id].vue
 i18n/locales/    ru.json, en.json
-tests/unit/      6 файлов, 84 теста
+tests/unit/      7 файлов, 94 теста
 ```
 
 ## Решения
