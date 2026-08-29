@@ -17,7 +17,8 @@ export default defineVitestConfig({
     coverage: {
       provider: 'v8',
       include: ['app/lib/**/*.ts', 'app/stores/**/*.ts'],
-      exclude: ['app/lib/theme-keys.ts'],
+      // Константы и обёртка над window — тестировать нечего.
+      exclude: ['app/lib/theme-keys.ts', 'app/lib/client-storage.ts'],
       thresholds: {
         lines: 90,
         functions: 90,
