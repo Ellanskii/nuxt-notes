@@ -15,9 +15,8 @@ const themeBootstrap = `
 `.trim()
 
 export default defineNuxtConfig({
-  ssr: false,
-
   modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@nuxt/eslint'],
+  ssr: false,
 
   devtools: { enabled: true },
 

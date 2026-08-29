@@ -7,7 +7,7 @@
     "label": "Theme",
     "light": "Light",
     "dark": "Dark",
-    "system": "System"
+    "system": "Auto"
   },
   "locale": {
     "label": "Language"
