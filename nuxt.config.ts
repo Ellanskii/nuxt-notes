@@ -18,6 +18,11 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@nuxt/eslint'],
   ssr: false,
 
+  // Без pathPrefix имя компонента берётся из имени файла, а не из пути:
+  // иначе components/editor/TodoEditorRow.vue пришлось бы звать
+  // EditorTodoEditorRow.
+  components: [{ path: '~/components', pathPrefix: false }],
+
   devtools: { enabled: true },
 
   app: {
