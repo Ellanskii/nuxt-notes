@@ -12,18 +12,9 @@ const editor = useNoteEditor(noteId)
 const heading = computed(() => (editor.isNew ? t('editor.createHeading') : t('editor.editHeading')))
 
 // Ссылки на строки, чтобы возвращать фокус после undo/redo и удаления.
-const rowRefs = new Map<string, { focus: () => void }>()
+const rows = useTemplateRef<{ focus: () => void }[]>('rows')
 let bypassGuard = false
 let highlightTimer: ReturnType<typeof setTimeout> | null = null
-
-function setRowRef(id: string, instance: unknown): void {
-  if (instance) {
-    rowRefs.set(id, instance as { focus: () => void })
-  }
-  else {
-    rowRefs.delete(id)
-  }
-}
 
 async function leave(): Promise<void> {
   bypassGuard = true
@@ -110,7 +101,10 @@ watch(editor.focusTodoId, async (id) => {
   }
 
   await nextTick()
-  rowRefs.get(id)?.focus()
+  const index = editor.draft.todos.findIndex(todo => todo.id === id)
+  if (index !== -1) {
+    rows.value?.[index]?.focus()
+  }
   editor.focusTodoId.value = null
 })
 
@@ -257,7 +251,7 @@ onUnmounted(() => {
         <TodoEditorRow
           v-for="todo in editor.draft.todos"
           :key="todo.id"
-          :ref="(instance: unknown) => setRowRef(todo.id, instance)"
+          ref="rows"
           :todo="todo"
           :highlighted="editor.highlightTodoId.value === todo.id"
           @toggle="editor.toggleTodo(todo.id)"

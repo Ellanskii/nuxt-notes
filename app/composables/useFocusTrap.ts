@@ -69,7 +69,9 @@ export function useFocusTrap(container: Ref<HTMLElement | null>, active: Ref<boo
     }
   })
 
-  onScopeDispose(() => document.removeEventListener('keydown', onKeydown, true))
+  // Модалка чаще закрывается размонтированием, чем сменой флага, —
+  // возвращаем фокус и в этом случае.
+  onScopeDispose(deactivate)
 
   return { activate, deactivate }
 }
