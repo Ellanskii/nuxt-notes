@@ -1,11 +1,22 @@
 export default {
   extends: ['stylelint-config-standard-scss'],
+  overrides: [
+    {
+      files: ['**/*.vue'],
+      customSyntax: 'postcss-html',
+    },
+  ],
   rules: {
-    // Vue SFC: :deep(), ::v-deep и прочие псевдоклассы фреймворка.
+    // БЭМ: block__element--modifier.
+    'selector-class-pattern': [
+      '^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z][a-z0-9]*(-[a-z0-9]+)*)?(--[a-z][a-z0-9]*(-[a-z0-9]+)*)?$',
+      { message: 'Ожидается имя класса в БЭМ-нотации' },
+    ],
     'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['deep', 'global'] }],
     'selector-pseudo-element-no-unknown': [true, { ignorePseudoElements: ['v-deep'] }],
-    'scss/at-rule-no-unknown': [true, { ignoreAtRules: ['use', 'mixin', 'include', 'if', 'else', 'each', 'content'] }],
     'no-descending-specificity': null,
+    // Токены сгруппированы по смыслу пустыми строками — не схлопывать.
+    'custom-property-empty-line-before': null,
   },
   ignoreFiles: ['node_modules/**', '.nuxt/**', '.output/**', 'coverage/**'],
 }
