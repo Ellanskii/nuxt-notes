@@ -11,7 +11,7 @@ function countingStorage(inner: StorageLike) {
     storage: {
       getItem: (key: string) => inner.getItem(key),
       setItem: (key: string, value: string) => {
-        // Пробную запись resolveStorage не считаем.
+        // Пробная запись resolveStorage в счёт не идёт.
         if (key === NOTES_KEY) {
           writes.push(key)
         }

@@ -181,7 +181,7 @@ export function useNoteEditor(noteId: string) {
     syncFlags()
     scheduleDraftSave()
 
-    // После отката фокус не должен улетать на body: ведём его к затронутой строке.
+    // После отката фокус не должен улетать на body: он переходит на затронутую строку.
     const targetId = patchTargetId(patch)
     if (targetId && draft.todos.some(todo => todo.id === targetId)) {
       focusTodoId.value = targetId

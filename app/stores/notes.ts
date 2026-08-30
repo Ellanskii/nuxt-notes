@@ -133,7 +133,7 @@ export const useNotesStore = defineStore('notes', () => {
       return
     }
 
-    // Данные более новой схемы не перезаписываем.
+    // Данные более новой схемы не перезаписываются.
     if (isReadOnly.value) {
       return
     }

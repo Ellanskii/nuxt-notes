@@ -70,7 +70,7 @@ export function useFocusTrap(container: Ref<HTMLElement | null>, active: Ref<boo
   })
 
   // Модалка чаще закрывается размонтированием, чем сменой флага, —
-  // возвращаем фокус и в этом случае.
+  // фокус возвращается и в этом случае.
   onScopeDispose(deactivate)
 
   return { activate, deactivate }

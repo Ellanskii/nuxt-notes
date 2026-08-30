@@ -93,8 +93,8 @@ function addTodo(afterId?: string): void {
 
 useUndoShortcut({ isModalOpen: isOpen, onUndo: undo, onRedo: redo })
 
-// Фокус на строке, которую только что затронули: после отката добавления
-// строка исчезает, и без этого фокус улетел бы на body.
+// Фокус на строке, которую затронуло последнее изменение: после отката
+// добавления строка исчезает, и без этого фокус улетел бы на body.
 watch(editor.focusTodoId, async (id) => {
   if (!id) {
     return

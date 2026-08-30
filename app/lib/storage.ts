@@ -43,7 +43,7 @@ export function createMemoryStorage(): StorageLike {
 
 /**
  * localStorage может быть недоступен целиком: отключённые куки, приватный режим,
- * iframe с блокировкой. Проверяем записью, при провале работаем в памяти —
+ * iframe с блокировкой. Доступность проверяется записью, при провале работа идёт в памяти —
  * приложение остаётся рабочим в пределах вкладки.
  */
 export function resolveStorage(candidate: StorageLike | null | undefined): StorageLike {
@@ -80,7 +80,7 @@ export function readNotes(storage: StorageLike): ReadResult<Note[]> {
     return { data: null, failure: 'corrupt' }
   }
 
-  // Данные, записанные более новой версией приложения, не трогаем:
+  // Данные, записанные более новой версией приложения, остаются нетронутыми:
   // затирать их своей схемой хуже, чем показать баннер.
   if (envelope.version > SCHEMA_VERSION) {
     return { data: null, failure: 'unsupported-version' }
@@ -147,7 +147,7 @@ export function clearDraft(storage: StorageLike, noteId: string): void {
 
 /**
  * v0 — первая форма хранения, где пункты были простыми строками.
- * Разворачиваем их в TodoItem, чтобы старые данные не терялись.
+ * Они разворачиваются в TodoItem, чтобы старые данные не терялись.
  */
 export function migrateNotes(version: number, data: unknown): Note[] | null {
   if (!Array.isArray(data)) {

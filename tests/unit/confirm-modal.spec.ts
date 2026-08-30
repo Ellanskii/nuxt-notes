@@ -25,7 +25,7 @@ describe('модалка подтверждения', () => {
     await wrapper.vm.$nextTick()
     await wrapper.vm.$nextTick()
 
-    // Модалка уходит в <Teleport to="body">, поэтому ищем в документе.
+    // Модалка уходит в <Teleport to="body">, поэтому поиск идёт по документу.
     const dialog = document.querySelector('[role="dialog"]')
     expect(dialog).not.toBeNull()
     expect(dialog?.getAttribute('aria-modal')).toBe('true')

@@ -15,5 +15,5 @@ export interface Note {
 export const TITLE_MAX_LENGTH = 200
 export const TODO_TEXT_MAX_LENGTH = 500
 
-/** Сколько пунктов показываем в превью на карточке списка. */
+/** Сколько пунктов видно в превью на карточке списка. */
 export const TODO_PREVIEW_LIMIT = 4
