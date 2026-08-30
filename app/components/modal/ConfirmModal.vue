@@ -67,16 +67,20 @@ function dismiss(): void {
 <style scoped lang="scss">
 .confirm__text {
   color: var(--c-text-muted);
+  overflow-wrap: anywhere;
 }
 
 .confirm__actions {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-2);
   justify-content: flex-end;
   margin-top: var(--space-2);
 }
 
-@media (width <= 380px) {
+// Подписи вроде «Продолжить редактирование» в строку не помещаются:
+// на узком экране разносим кнопки на две строки во всю ширину.
+@media (width <= 560px) {
   .confirm__actions {
     flex-direction: column-reverse;
 

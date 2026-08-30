@@ -90,7 +90,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  width: min(420px, 100%);
+  width: min(520px, 100%);
   padding: var(--space-5);
   border: 1px solid var(--c-border);
   border-radius: var(--radius-lg);
