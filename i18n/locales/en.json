@@ -1,7 +1,7 @@
 {
   "app": {
-    "title": "Notes",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "repo": "ellanskii — source on GitHub"
   },
   "theme": {
     "label": "Theme",

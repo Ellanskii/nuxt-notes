@@ -1,7 +1,7 @@
 {
   "app": {
-    "title": "Заметки",
-    "skipToContent": "Перейти к содержимому"
+    "skipToContent": "Перейти к содержимому",
+    "repo": "ellanskii — исходники на GitHub"
   },
   "theme": {
     "label": "Тема",

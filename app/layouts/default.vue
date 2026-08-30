@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ThemeMode } from '~/lib/theme-keys'
 
+const REPO_URL = 'https://github.com/Ellanskii/nuxt-notes'
+
 const { t, locale, locales, setLocale } = useI18n()
 const { mode, setMode, init } = useTheme()
 const { message } = useLiveRegion()
@@ -35,12 +37,16 @@ onMounted(init)
   <div class="layout">
     <header class="layout__header">
       <div class="layout__inner layout__bar">
-        <NuxtLink
-          to="/"
+        <a
+          :href="REPO_URL"
           class="layout__brand"
+          target="_blank"
+          rel="noopener noreferrer"
+          :aria-label="t('app.repo')"
         >
-          {{ t('app.title') }}
-        </NuxtLink>
+          <IconGithub />
+          ellanskii
+        </a>
 
         <div class="layout__controls">
           <BaseSegmented
@@ -130,10 +136,17 @@ onMounted(init)
 }
 
 .layout__brand {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
   color: var(--c-text);
   font-weight: 600;
-  font-size: 17px;
+  font-size: 16px;
   text-decoration: none;
+
+  &:hover {
+    color: var(--c-text-muted);
+  }
 }
 
 .layout__controls {
