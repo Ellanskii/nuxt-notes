@@ -3,6 +3,8 @@
 SPA для заметок со списками задач. Nuxt 4, Composition API, TypeScript strict, Pinia, SCSS.
 Данные хранятся в localStorage, серверной части нет.
 
+**Демо:** http://hqgxehnasivy44i92xfdzxwy.159.195.145.137.sslip.io/
+
 ## Запуск
 
 ```bash
