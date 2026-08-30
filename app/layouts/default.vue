@@ -30,6 +30,16 @@ const writeBanner = computed(() => {
   return null
 })
 
+function changeLocale(next: string): void {
+  setLocale(next as typeof locale.value)
+  umTrackEvent('locale_change', { locale: next })
+}
+
+function changeTheme(next: ThemeMode): void {
+  setMode(next)
+  umTrackEvent('theme_change', { mode: next })
+}
+
 onMounted(init)
 </script>
 
@@ -60,13 +70,13 @@ onMounted(init)
             :model-value="locale"
             :label="t('locale.label')"
             :options="localeOptions"
-            @update:model-value="setLocale($event)"
+            @update:model-value="changeLocale($event)"
           />
           <BaseSegmented
             :model-value="mode"
             :label="t('theme.label')"
             :options="themeOptions"
-            @update:model-value="setMode($event)"
+            @update:model-value="changeTheme($event)"
           >
             <template #light>
               <IconSun />

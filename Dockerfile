@@ -11,6 +11,12 @@ RUN corepack enable
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# Приложение статическое, поэтому конфиг аналитики попадает в бандл на сборке,
+# а не читается в рантайме. Без этих аргументов umami просто отключён.
+ARG NUXT_UMAMI_HOST=""
+ARG NUXT_UMAMI_ID=""
+ENV NUXT_UMAMI_HOST=$NUXT_UMAMI_HOST \
+    NUXT_UMAMI_ID=$NUXT_UMAMI_ID
 RUN pnpm build
 
 FROM node:22-alpine AS runtime

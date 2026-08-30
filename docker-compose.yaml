@@ -1,6 +1,10 @@
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        NUXT_UMAMI_HOST: ${NUXT_UMAMI_HOST:-}
+        NUXT_UMAMI_ID: ${NUXT_UMAMI_ID:-}
     image: nuxt-notes
     ports:
       - "3000:3000"

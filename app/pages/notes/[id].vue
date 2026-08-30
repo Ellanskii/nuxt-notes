@@ -27,6 +27,11 @@ async function save(): Promise<void> {
     return
   }
 
+  umTrackEvent('note_save', {
+    mode: editor.isNew ? 'create' : 'update',
+    todos: note.todos.length,
+    done: note.todos.filter(todo => todo.done).length,
+  })
   announce(t('announce.saved'))
   await leave()
 }
@@ -52,6 +57,7 @@ async function cancel(): Promise<void> {
   }
 
   editor.discard()
+  umTrackEvent('note_edit_cancel')
   announce(t('announce.cancelled'))
   await leave()
 }
@@ -70,19 +76,23 @@ async function remove(): Promise<void> {
     return
   }
 
+  const todos = editor.draft.todos.length
   editor.remove()
+  umTrackEvent('note_delete', { from: 'editor', todos })
   announce(t('announce.deleted'))
   await leave()
 }
 
 function undo(): void {
   if (editor.undo()) {
+    umTrackEvent('note_undo')
     announce(t('announce.undone'))
   }
 }
 
 function redo(): void {
   if (editor.redo()) {
+    umTrackEvent('note_redo')
     announce(t('announce.redone'))
   }
 }
@@ -162,10 +172,12 @@ onMounted(async () => {
 
   if (restore) {
     editor.restoreDraft(draft.note)
+    umTrackEvent('draft_restore', { age: Math.round((Date.now() - draft.updatedAt) / 1000) })
     announce(t('announce.draftRestored'))
   }
   else {
     editor.dropDraft()
+    umTrackEvent('draft_discard')
     announce(t('announce.draftDiscarded'))
   }
 })

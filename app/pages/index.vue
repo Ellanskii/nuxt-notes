@@ -19,6 +19,7 @@ async function remove(note: Note): Promise<void> {
   if (confirmed) {
     store.deleteNote(note.id)
     store.flush()
+    umTrackEvent('note_delete', { from: 'list', todos: note.todos.length })
     announce(t('announce.deleted'))
   }
 }

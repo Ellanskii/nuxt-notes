@@ -15,7 +15,7 @@ const themeBootstrap = `
 `.trim()
 
 export default defineNuxtConfig({
-  modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@nuxt/eslint'],
+  modules: ['@pinia/nuxt', '@nuxtjs/i18n', '@nuxt/eslint', 'nuxt-umami'],
   ssr: false,
 
   // Без pathPrefix имя компонента берётся из имени файла, а не из пути:
@@ -84,5 +84,13 @@ export default defineNuxtConfig({
       cookieKey: 'notes_locale',
       redirectOn: 'root',
     },
+  },
+
+  // Хост и id читаются из NUXT_UMAMI_HOST / NUXT_UMAMI_ID на этапе сборки:
+  // приложение статическое, серверной части для проксирования нет. Без них
+  // модуль уходит в no-op, приложение работает как обычно.
+  umami: {
+    ignoreLocalhost: true,
+    performance: true,
   },
 })
