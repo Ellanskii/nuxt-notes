@@ -12,6 +12,10 @@ describe('основной макет', () => {
     expect(wrapper.findAll('[role="group"]')).toHaveLength(2)
     expect(wrapper.find('[aria-live="polite"]').exists()).toBe(true)
 
+    // Skip-link ведёт на <main>, иначе клавиатурный обход начинается с шапки.
+    expect(wrapper.find('a[href="#main"]').exists()).toBe(true)
+    expect(wrapper.find('main#main').exists()).toBe(true)
+
     // Нерезолвленный компонент осел бы в разметке кебаб-тегом.
     expect(html).not.toMatch(/<(confirm-modal|base-segmented|base-banner)/)
   })

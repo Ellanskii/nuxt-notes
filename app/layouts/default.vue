@@ -35,6 +35,13 @@ onMounted(init)
 
 <template>
   <div class="layout">
+    <a
+      href="#main"
+      class="layout__skip"
+    >
+      {{ t('app.skipToContent') }}
+    </a>
+
     <header class="layout__header">
       <div class="layout__inner layout__bar">
         <a
@@ -72,7 +79,11 @@ onMounted(init)
       </div>
     </header>
 
-    <main class="layout__inner layout__main">
+    <main
+      id="main"
+      class="layout__inner layout__main"
+      tabindex="-1"
+    >
       <BaseBanner
         v-if="readBanner"
         tone="warning"
@@ -114,6 +125,26 @@ onMounted(init)
   max-width: 900px;
   margin: 0 auto;
   padding: 0 var(--space-4);
+}
+
+// Ссылка видна только под фокусом: первым Tab уводит с шапки к содержимому.
+.layout__skip {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 20;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-md);
+  color: var(--c-text);
+  background: var(--c-surface);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  transform: translateY(-250%);
+
+  &:focus-visible {
+    transform: translateY(0);
+  }
 }
 
 .layout__header {
@@ -161,5 +192,10 @@ onMounted(init)
   flex-direction: column;
   gap: var(--space-4);
   padding-block: var(--space-5) var(--space-6);
+
+  // Фокус после перехода по skip-link: рамка вокруг всей области только мешает.
+  &:focus {
+    outline: none;
+  }
 }
 </style>
